@@ -1,0 +1,4 @@
+/build
+*.so
+.cxx
+/src/main/cpp/mnn/*.so
