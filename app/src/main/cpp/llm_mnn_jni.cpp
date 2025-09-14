@@ -28,7 +28,7 @@ extern "C" {
 
 // 模型加载
 JNIEXPORT jboolean JNICALL
-Java_com_example_mnndeepseek_Chat_Init(JNIEnv *env, jobject thiz, jstring modelDir) {
+Java_com_example_mnndeepseek_jni_Chat_init(JNIEnv *env, jobject thiz, jstring modelDir) {
     const char* model_dir = env->GetStringUTFChars(modelDir, 0);
     if (!llm.get()) {
         llm.reset(MNN::Transformer::Llm::createLLM(model_dir));
@@ -44,7 +44,7 @@ Java_com_example_mnndeepseek_Chat_Init(JNIEnv *env, jobject thiz, jstring modelD
 
 // 将问题输入模型
 JNIEXPORT jstring JNICALL
-Java_com_example_mnndeepseek_Chat_Submit(JNIEnv *env, jobject thiz, jstring inputStr) {
+Java_com_example_mnndeepseek_jni_Chat_submit(JNIEnv *env, jobject thiz, jstring inputStr) {
     if (!llm.get()) {
         return env->NewStringUTF("Failed, Chat is not ready!");
     }
@@ -59,7 +59,7 @@ Java_com_example_mnndeepseek_Chat_Submit(JNIEnv *env, jobject thiz, jstring inpu
 }
 
 JNIEXPORT jbyteArray JNICALL
-Java_com_example_mnndeepseek_Chat_Respose(JNIEnv *env, jobject thiz) {
+Java_com_example_mnndeepseek_jni_Chat_respose(JNIEnv *env, jobject thiz) {
     auto len = response_buffer.str().size();
     jbyteArray res = env->NewByteArray(len);
     env->SetByteArrayRegion(res, 0, len, (const jbyte*)response_buffer.str().c_str());
@@ -67,12 +67,12 @@ Java_com_example_mnndeepseek_Chat_Respose(JNIEnv *env, jobject thiz) {
 }
 
 JNIEXPORT void JNICALL
-Java_com_example_mnndeepseek_Chat_Done(JNIEnv *env, jobject thiz) {
+Java_com_example_mnndeepseek_jni_Chat_done(JNIEnv *env, jobject thiz) {
     response_buffer.str("");
 }
 
 JNIEXPORT void JNICALL
-Java_com_example_mnndeepseek_Chat_Reset(JNIEnv *env, jobject thiz) {
+Java_com_example_mnndeepseek_jni_Chat_reset(JNIEnv *env, jobject thiz) {
     llm->reset();
 }
 

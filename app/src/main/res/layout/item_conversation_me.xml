@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="10dp"
+    android:layout_marginLeft="40dp">
+
+    <ImageView
+        android:id="@+id/tv_chat_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_below="@+id/tv_chat_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:drawablePadding="5dp"
+            android:text="5:04pm"
+            android:textSize="14sp"
+            android:textColor="#9b9b9b"/>
+
+        <TextView
+            android:id="@+id/tv_chat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="你好"
+            android:textColor="#333333"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
